@@ -1,1 +1,6 @@
-# module-test
+
+## License
+
+---
+
+MIT
