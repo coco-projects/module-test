@@ -2,11 +2,10 @@
 
     namespace Coco\moduleTest\Console\Controller;
 
-    use Coco\cocoApp\Kernel\Business\ControllerAbstract\ConsoleControllerAbstract;
     use Coco\cocoApp\Kernel\Business\ControllerWrapper\ConsoleControllerWrapper;
     use Symfony\Component\Console\Command\Command;
 
-    class Test extends ConsoleControllerAbstract
+    class Test extends BaseController
     {
         public function __construct(ConsoleControllerWrapper $wrapper)
         {
@@ -23,11 +22,14 @@
             $section2 = $output->section();
 
             $section1->writeln([
-                'Hello22222222222222',
+                'Hello11111',
+            ]);
+            
+            $section2->writeln([
+                'Hello22222',
             ]);
 
             return Command::SUCCESS;
         }
-
 
     }

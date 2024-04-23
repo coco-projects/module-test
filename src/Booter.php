@@ -3,11 +3,13 @@
     namespace Coco\moduleTest;
 
     use Coco\cocoApp\Kernel\Abstracts\BooterAbstract;
+    use Coco\cocoApp\Kernel\CocoApp;
 
     class Booter extends BooterAbstract
     {
-        public function __construct()
+        public function __construct(CocoApp $cocoApp)
         {
-            $this->appInfo = new Info();
+            parent::__construct($cocoApp);
+            $this->appInfo = new Info($this->cocoApp);
         }
     }

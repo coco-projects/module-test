@@ -1,10 +1,10 @@
 <?php
 
-    use Coco\moduleTest\Console\Controller\Test;
-    use Coco\cocoApp\CocoApp;
     use Coco\cocoApp\Kernel\Business\ConsleCommand;
-    use Coco\cocoApp\Kernel\Business\ControllerAbstract\ConsoleControllerAbstract;
+    use Coco\cocoApp\Kernel\Business\ControllerAbstract\ConsoleClosureController;
     use Coco\cocoApp\Kernel\Business\ControllerWrapper\ConsoleControllerWrapper;
+    use Coco\cocoApp\Kernel\CocoApp;
+    use Coco\moduleTest\Console\Controller\Test;
     use Symfony\Component\Console\Command\Command;
 
     return function(ConsleCommand $command) {
@@ -12,12 +12,13 @@
          * @var CocoApp $cocoApp
          */
         $cocoApp = CocoApp::getInstance();
+        $appName = \Coco\moduleTest\Info::getAppName();
 
-        $command->addRoute('/', ConsoleControllerWrapper::classHandler(Test::class, 'index'));
+        $command->addRoute('/', ConsoleControllerWrapper::classHandler(Test::class, 'index'),__FILE__,'类测试');
 
-        $command->addRoute('/closureTest', ConsoleControllerWrapper::closure(function(): int {
+        $command->addRoute('/closureTest', ConsoleControllerWrapper::closure($appName, function(ConsoleControllerWrapper $ins): int {
             /**
-             * @var ConsoleControllerAbstract $this
+             * @var ConsoleClosureController $this
              */
 
             $input   = $this->input;
@@ -28,10 +29,14 @@
             $section2 = $output->section();
 
             $section1->writeln([
-                'closureTest',
+                'closureTest111',
+            ]);
+
+            $section2->writeln([
+                'closureTest222',
             ]);
 
             return Command::SUCCESS;
 
-        }));
+        }),__FILE__,'闭包测试');
     };

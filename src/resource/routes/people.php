@@ -1,8 +1,8 @@
 <?php
 
-    use Coco\moduleTest\Http\Controller\People;
-    use Coco\cocoApp\CocoApp;
     use Coco\cocoApp\Kernel\Business\ControllerWrapper\WebControllerWrapper;
+    use Coco\cocoApp\Kernel\CocoApp;
+    use Coco\moduleTest\Http\Controller\People;
     use Slim\App;
 
     return function(App $app) {
@@ -10,6 +10,7 @@
          * @var CocoApp $cocoApp
          */
         $cocoApp = $app->getContainer()->get('cocoApp');
+        $appName = \Coco\moduleTest\Info::getAppName();
 
         $app->get('/fetchList', WebControllerWrapper::classHandler(People::class, 'fetchList'));
         $app->get('/fetchItem', WebControllerWrapper::classHandler(People::class, 'fetchItem'));

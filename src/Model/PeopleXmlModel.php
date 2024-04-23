@@ -12,8 +12,8 @@
     {
         protected function init(): void
         {
-            $xmlFilePath  = 'data/test.xml';
-            $this->source = XmlSource::getIns(file_get_contents($xmlFilePath), function($data) {
+            $filePath     = 'data/test.xml';
+            $this->source = XmlSource::getIns(file_get_contents($filePath), function($data) {
                 return $data['item'];
             });
 

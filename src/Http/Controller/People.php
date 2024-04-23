@@ -6,12 +6,11 @@
     use Coco\moduleTest\Logic\PeopleMysqlLogic;
     use Coco\moduleTest\Logic\PeopleXmlLogic;
     use Coco\dataSource\filter\MysqlFilter;
-    use Coco\cocoApp\Kernel\Business\ControllerAbstract\WebControllerAbstract;
     use Coco\cocoApp\Kernel\Business\ControllerWrapper\WebControllerWrapper;
     use Slim\Exception\HttpNotFoundException;
     use Psr\Http\Message\ResponseInterface as Response;
 
-    class People extends WebControllerAbstract
+    class People extends BaseController
     {
         public ?PeopleXmlLogic   $logicXml;
         public ?PeopleMysqlLogic $logicMysql;

@@ -14,8 +14,8 @@
     {
         protected function init(): void
         {
-            $xmlFilePath  = require 'data/array.php';
-            $this->source = IterableSource::getIns($xmlFilePath);
+            $filePath     = require 'data/array.php';
+            $this->source = IterableSource::getIns($filePath);
 
             parent::init();
         }

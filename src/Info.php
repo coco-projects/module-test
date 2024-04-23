@@ -6,7 +6,7 @@
 
     class Info extends AppInfoAbstract
     {
-        public string $appName = 'admin';
+        use AppName;
 
         public function getAppBasePath(): string
         {

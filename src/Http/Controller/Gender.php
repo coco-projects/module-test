@@ -3,12 +3,11 @@
     namespace Coco\moduleTest\Http\Controller;
 
     use Coco\moduleTest\Logic\GenderMysqlLogic;
-    use Coco\cocoApp\Kernel\Business\ControllerAbstract\WebControllerAbstract;
     use Coco\cocoApp\Kernel\Business\ControllerWrapper\WebControllerWrapper;
     use Slim\Exception\HttpNotFoundException;
     use Psr\Http\Message\ResponseInterface as Response;
 
-    class Gender extends WebControllerAbstract
+    class Gender extends BaseController
     {
         public ?GenderMysqlLogic $logicMysql;
 
@@ -44,7 +43,6 @@
              * ------------------------------------------------------------------------------
              * ------------------------------------------------------------------------------
              */
-
             $response->getBody()->write("Hello index" . PHP_EOL);
 
             return $response;
